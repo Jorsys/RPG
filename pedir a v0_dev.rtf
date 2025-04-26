@@ -1,0 +1,80 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh10920\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 En primer lugar, esta parte la tienes que quitar de ficha-personaje.html porque ya no se usa y la olvidaste quitar:\
+<div class="form-group">\
+                        <input type="text" id="itemName" placeholder="Nombre del objeto">\
+                        <input type="number" id="itemQuantity" placeholder="Cantidad" min="1" value="1">\
+                        <select id="itemHands">\
+                            <option value="0">No requiere manos</option>\
+                            <option value="1">1 mano</option>\
+                            <option value="2">2 manos</option>\
+                        </select>\
+                        <button id="addItemBtn" class="btn">Agregar</button>\
+                    </div>\
+\
+\
+Segundo:\
+En el inventario, faltan los apartados para las monedas, las ganz\'faas, las antorchas y las cuerdas.\
+\
+Una vez que hayas implementado estos cuatro objetos al inventario: \
+- Agregar las opciones Resistencia Actual y Resistencia M\'e1xima a las armas. (La resistencia actual nunca puede ser mayor que la resistencia m\'e1xima, ni en las armas ni en las armaduras).\
+\
+- has de hacer que todos los objetos creados que se encuentren en el inventario, puedan ser editables y las armas y armaduras que est\'e9n equipadas, deben de poderse editar solo la resistencia actual.\
+\
+- El grimorio actualmente no funciona, pero no importa porque lo vamos a suprimir y rehacer entero con estas especificaciones: Cada hechizo tiene: Nombre, Dificultad de tirada, Dado de dificultad, Distancia m\'e1xima, uso (Ofensivo o De Ayuda), Acci\'f3n del hechizo y una descripci\'f3n. Anteriormente, esta parte del grimorio tambi\'e9n te la expliqu\'e9.\
+\
+- Estando en la Ficha del Personaje, cuando clico en \'93volver\'94 aparece el mensaje que dice as\'ed: \'93Esta p\'e1gina dice No se ha especificado un personaje\'94\
+\
+\
+\
+Cuando un arma o armadura que se encuentra equipada, se clica en editar, el lugar donde se va a editar no debe aparecer dentro del inventario, sino en un Modal.\
+\
+\
+La zona del grimorio donde se A\'f1aden los hechizos ocupa mucho, de manera que lo cambiaremos un poco. En lugar de que est\'e9 todo el tiempo en pantalla, tan solo aparecer\'e1 en un Modal cuando se pulse un nuevo bot\'f3n llamado \'93Crear Hechizo\'94\
+\
+\
+\
+El bot\'f3n de volver sigue sin funcionar. Arr\'e9glalo.\
+\
+\
+\
+\
+\
+\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\
+\
+\
+\
+\
+\
+\
+Desde dentro de ficha-personaje.html he cambiado el nivel al personaje y este cambio no se refleja en personaje.html\
+\
+\
+Con la intenci\'f3n de ocupar menos espacio, en ficha-personaje.html vamos a poner el t\'edtulo de cada caja de texto justo a su izquierda en lugar de arriba y vamos a ajustar los recuadros de texto para que no sean tan grandes, En los recuadros de informaci\'f3n B\'e1sica que son para introducir texto, (Nombre, Raza y Clase), los adaptaremos a un recuadro de 20 caracteres y el recuadro del nivel, que es un n\'famero, lo adaptaremos al tama\'f1o de cuatro caracteres.\
+En los recuadros de Atributos, haremos lo mismo que con el de nivel. Pondremos el texto junto al recuadro y reduciremos el tama\'f1o del recuadro. Ademas cambiaremos los t\'edtulos de cada uno quedando de esta forma: El \'93Combate cuerpo a Cuerpo\'94 pasar\'e1 a llamarse solamente \'93Combate\'94. El \'93Combate a distancia\'94 pasar\'e1 a llamarse \'93Punter\'eda\'94. El \'93Lanzamiento de hechizos\'94 pasar\'e1 a llamarse \'93Magia\'94.\
+\
+En el apartado de \'93Estado\'94, los recuadros de texto tambi\'e9n reducir\'e1n su tama\'f1o como los anteriores, pero el t\'edtulo de cada uno de estos permanecer\'e1 encima suyo, con la diferencia que esta vez lo har\'e1 centrado.\
+\
+Todos los botones de Editar, Eliminar, Desequipar y Equipar deber\'e1n ser sustituidos por iconos representativos de la accion a realizar.\
+\
+Para reducir espacio, vamos a modificar el apartado del inventario:\
+Las categor\'edas de objetos dentro del inventario aparecer\'e1n en columnas y ser\'e1n retr\'e1ctiles, solo pudiendo haber una desplegada como m\'e1ximo. De manera que cuando se clica en una categor\'eda se despliega y si despu\'e9s se clica en otra, la anterior se recoge para mostrar la nueva desplegada. Cada categor\'eda tendr\'e1 su bot\'f3n para agregar objeto y cuando se clique, pedir\'e1 los datos para ello en un modal como ya hemos hecho en otras partes. Es importante que siga pidiendo lo que necesita seg\'fan el tipo de objeto a agregar.\
+\
+Como ahora aparece para agregar los objetos con ventanas flotantes (Modales). La forma en la que ten\'edamos hasta ahora para agregarlo, la eliminaremos.\
+\
+Las monedas, ganz\'faas, antorchas y cuerdas, las cambiaremos de lugar. En vez de estar como pesta\'f1as, estar\'e1n como iconos junto a su valor y las situaremos debajo del t\'edtulo de \'93Inventario\'94 y por encima de las categor\'edas \'93Armadura, Armas, y dem\'e1s\'94 Cuando se cliquen sobre el valor de ellas, aparecer\'e1 el Modal para editarlas.\
+\
+Cambia el nombre de los archivos Login por Index junto con todas sus referencias\
+\
+\
+}

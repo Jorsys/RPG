@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Rol - Ficha de Personaje</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-actions">
+            <button id="backBtn" class="btn">Volver</button>
+            <h1 id="characterName">Ficha de Personaje</h1>
+        </div>
+        
+        <div class="character-sheet">
+            <div class="card">
+                <h2>Información Básica</h2>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="raza">Raza:</label>
+                    <input type="text" id="raza" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="nivel">Nivel:</label>
+                    <input type="number" id="nivel" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="clase">Clase:</label>
+                    <input type="text" id="clase">
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Atributos</h2>
+                <div class="attributes-grid">
+                    <div class="form-group">
+                        <label for="combateCuerpo">Combate cuerpo a cuerpo:</label>
+                        <input type="number" id="combateCuerpo" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="combateDistancia">Combate a distancia:</label>
+                        <input type="number" id="combateDistancia" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="lanzamientoHechizos">Lanzamiento de hechizos:</label>
+                        <input type="number" id="lanzamientoHechizos" min="0">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Estado</h2>
+                <div class="status-grid">
+                    <div class="form-group">
+                        <label for="vida">Vida:</label>
+                        <div class="status-control">
+                            <button class="btn-small decrease">-</button>
+                            <input type="number" id="vida" min="0">
+                            <button class="btn-small increase">+</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="aguante">Aguante:</label>
+                        <div class="status-control">
+                            <button class="btn-small decrease">-</button>
+                            <input type="number" id="aguante" min="0">
+                            <button class="btn-small increase">+</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mana">Maná:</label>
+                        <div class="status-control">
+                            <button class="btn-small decrease">-</button>
+                            <input type="number" id="mana" min="0">
+                            <button class="btn-small increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GRIMORIO ACTUALIZADO -->
+            <div class="card full-width">
+                <h2>Grimorio</h2>
+                <div class="table-container">
+                    <table class="grimorio-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Dificultad</th>
+                                <th>Distancia</th>
+                                <th>Uso</th>
+                                <th>Acción</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grimorioList">
+                            <!-- Los hechizos se cargarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                <button id="createSpellBtn" class="btn">Crear Hechizo</button>
+            </div>
+            
+            <div class="card">
+                <h2>Equipamiento</h2>
+                <div class="equipment-section">
+                    <h3>Equipados</h3>
+                    <div id="equippedItems" class="list-container">
+                        <!-- Los items equipados se cargarán aquí -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- INVENTARIO ACTUALIZADO -->
+            <div class="card full-width">
+                <h2>Inventario</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-category="armaduras">Armaduras</button>
+                    <button class="tab-btn" data-category="armas">Armas</button>
+                    <button class="tab-btn" data-category="municion">Munición</button>
+                    <button class="tab-btn" data-category="pociones">Pociones</button>
+                    <button class="tab-btn" data-category="pergaminos">Pergaminos</button>
+                    <button class="tab-btn" data-category="monedas">Monedas</button>
+                    <button class="tab-btn" data-category="ganzuas">Ganzúas</button>
+                    <button class="tab-btn" data-category="antorchas">Antorchas</button>
+                    <button class="tab-btn" data-category="cuerdas">Cuerdas</button>
+                    <button class="tab-btn" data-category="otros">Otros</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="inventoryList" class="list-container">
+                        <!-- Los items se cargarán aquí dinámicamente -->
+                    </div>
+                    
+                    <!-- Formulario dinámico que cambia según la categoría -->
+                    <div id="itemForm">
+                        <!-- El formulario se cargará dinámicamente según la categoría seleccionada -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para editar items equipados -->
+    <div id="editEquippedModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEditEquippedModal">&times;</span>
+            <div id="editEquippedModalContent">
+                <!-- El contenido se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear hechizos -->
+    <div id="createSpellModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCreateSpellModal">&times;</span>
+            <h2>Añadir Hechizo</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="spellName">Nombre:</label>
+                    <input type="text" id="spellName" required>
+                </div>
+                <div class="form-group">
+                    <label for="spellDifficultyValue">Dificultad (valor):</label>
+                    <input type="number" id="spellDifficultyValue" min="1" value="6">
+                </div>
+                <div class="form-group">
+                    <label for="spellDifficultyDice">Dados:</label>
+                    <input type="text" id="spellDifficultyDice" placeholder="1d10" value="1d10">
+                </div>
+                <div class="form-group">
+                    <label for="spellDistance">Distancia (m):</label>
+                    <input type="number" id="spellDistance" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="spellUse">Uso:</label>
+                    <select id="spellUse">
+                        <option value="Ofensivo">Ofensivo</option>
+                        <option value="Ayuda">Ayuda</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="spellAction">Acción:</label>
+                    <input type="text" id="spellAction" placeholder="2d6 daño, +3 escudo, etc.">
+                </div>
+                <div class="form-group full-width">
+                    <label for="spellDescription">Descripción:</label>
+                    <textarea id="spellDescription" rows="2"></textarea>
+                </div>
+            </div>
+            <button id="addSpellBtn" class="btn">Agregar Hechizo</button>
+        </div>
+    </div>
+    <script src="ficha-personaje.js"></script>
+</body>
+</html>

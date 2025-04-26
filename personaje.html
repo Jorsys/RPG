@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Rol - Personajes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Personajes</h1>
+        
+        <div class="card">
+            <h2>Personajes Existentes</h2>
+            <div id="personajesList" class="personajes-list">
+                <!-- Los personajes se cargarán aquí dinámicamente -->
+            </div>
+            <button id="newCharacterBtn" class="btn btn-primary">Crear Nuevo Personaje</button>
+        </div>
+
+        <!-- Modal con estructura simplificada -->
+        <div id="createCharacterModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Crear Nuevo Personaje</h2>
+                <form id="characterForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="raza">Raza:</label>
+                        <select id="raza">
+                            <!-- Las razas se cargarán dinámicamente -->
+                        </select>
+                        <button type="button" id="customRaceBtn" class="btn btn-small">Personalizar Raza</button>
+                    </div>
+                    <div id="customRaceFields" class="hidden">
+                        <div class="form-group">
+                            <label for="customRaceName">Nombre de Raza:</label>
+                            <input type="text" id="customRaceName">
+                        </div>
+                        <div class="form-group">
+                            <label for="brazos">Número de Brazos:</label>
+                            <input type="number" id="brazos" min="0" value="2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nivel">Nivel:</label>
+                        <input type="number" id="nivel" min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="clase">Clase:</label>
+                        <input type="text" id="clase">
+                    </div>
+                    <div class="form-group">
+                        <label for="combateCuerpo">Combate cuerpo a cuerpo:</label>
+                        <input type="number" id="combateCuerpo" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="combateDistancia">Combate a distancia:</label>
+                        <input type="number" id="combateDistancia" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="lanzamientoHechizos">Lanzamiento de hechizos:</label>
+                        <input type="number" id="lanzamientoHechizos" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="vida">Vida:</label>
+                        <input type="number" id="vida" min="1" value="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="aguante">Aguante:</label>
+                        <input type="number" id="aguante" min="0" value="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="mana">Maná:</label>
+                        <input type="number" id="mana" min="0" value="10">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Personaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script al final para asegurar que el DOM esté cargado -->
+    <script src="personaje.js"></script>
+</body>
+</html>
